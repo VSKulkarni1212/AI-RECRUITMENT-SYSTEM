@@ -15,9 +15,9 @@ This is an AI-powered recruitment backend featuring semantic job discovery and c
    ```
 
 2. **Download Large Files**:
-   Download these files from [Kaggle](https://www.kaggle.com/datasets/vaishnaviskulkarni/linkedin-master-library) and place them in `backend/app/models/`:
-   - `linkedin_master_library.csv` (4.16 GB)
-   - `linkedin_jobs_v3.index` (490 MB)
+   Download these files and place them in `backend/app/models/`:
+   - `linkedin_master_library.csv` (4.16 GB) - [Download from Kaggle](https://www.kaggle.com/datasets/vaishnaviskulkarni/linkedin-master-library)
+   - `linkedin_jobs_v3.index` (490 MB) - *Note: Please ensure this file is uploaded to your Kaggle dataset or provide a direct link here.*
 
 3. **Install Dependencies**:
    ```bash
