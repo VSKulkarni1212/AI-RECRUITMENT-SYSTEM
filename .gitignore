@@ -1,0 +1,21 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large Datasets and Models (GitHub limit is 100MB)
+backend/app/models/linkedin_master_library.csv
+backend/app/models/linkedin_jobs_v3.index
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

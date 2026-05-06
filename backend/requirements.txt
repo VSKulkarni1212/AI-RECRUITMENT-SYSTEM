@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+tensorflow==2.16.1
+xgboost
+faiss-cpu
+sentence-transformers
+pydantic
+scikit-learn
+pandas
+numpy
+joblib
+PyMuPDF
+python-docx
