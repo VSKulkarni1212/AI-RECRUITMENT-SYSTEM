@@ -2,13 +2,13 @@
 
 This is an AI-powered recruitment platform featuring semantic job discovery, candidate ranking, and seamless Supabase integration.
 
-## 🚀 Features
+## Features
 - **Job Recommendation**: SNN + FAISS for high-vibe semantic matching across 40,000+ roles.
 - **Candidate Ranking**: XGBoost (LambdaMART) for professional-grade candidate assessment.
 - **Resume Parsing**: Automated text extraction from PDF and DOCX formats.
 - **Dual-Source Database**: Hybrid flow using local CSV for massive library search and Supabase for active role management.
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the Repository
 ```bash
@@ -56,7 +56,7 @@ npm install
 npm run dev
 ```
 
-## 📐 Project Architecture
+## Project Architecture
 - **Backend**: FastAPI with Python. Handles SNN embeddings, FAISS search, and XGBoost ranking.
 - **Frontend**: Vite + React + Tailwind CSS. Fully dynamic with zero hardcoded API URLs.
 - **Database**: Supabase (PostgreSQL) for persistence and RLS-secured data management.
