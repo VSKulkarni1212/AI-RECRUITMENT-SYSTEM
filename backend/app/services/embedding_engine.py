@@ -34,9 +34,17 @@ try:
             v_data = pickle.load(f)
             # Reconstruct TextVectorization from config
             vectorizer = keras.layers.TextVectorization.from_config(v_data['config'])
-            if v_data.get('weights'):
+            
+            # Use 'vocabulary' key if it exists (our fixed version)
+            # Otherwise try 'weights' (original version)
+            if v_data.get('vocabulary'):
+                vectorizer.set_vocabulary(v_data['vocabulary'])
+                print(f"[INFO] Vectorizer loaded successfully with {len(v_data['vocabulary'])} words.")
+            elif v_data.get('weights'):
                 vectorizer.set_weights(v_data['weights'])
-            print("[INFO] Vectorizer loaded successfully.")
+                print("[INFO] Vectorizer loaded successfully with weights.")
+            else:
+                print("[WARNING] Vectorizer loaded but no vocabulary/weights found.")
 except Exception as e:
     print(f"[WARNING] Vectorizer loading failed: {e}")
 
@@ -129,21 +137,17 @@ def get_sbert_embedding(text: str):
 
 def get_edu_score(resume_text: str):
     """
-    Categorizes education level using semantic similarity.
+    Categorizes education level using keyword matching.
     Returns: 0.0 (High School) to 3.0 (PhD).
     """
-    categories = ["High School", "Bachelor's Degree", "Master's Degree", "Doctorate / PhD"]
-    # Focus on the first 200 words where education is usually listed
-    resume_snippet = " ".join(str(resume_text).split()[:200])
-    
-    resume_emb = get_sbert_embedding(resume_snippet)
-    category_embs = get_sbert_embedding(categories)
-    
-    # Calculate cosine similarity
-    similarities = util.cos_sim(resume_emb, category_embs)[0]
-    
-    # Return the index of the highest matching category
-    return float(torch.argmax(similarities).item())
+    text = str(resume_text).lower()
+    if any(kw in text for kw in ["phd", "ph.d", "doctorate"]):
+        return 3.0
+    if any(kw in text for kw in ["master", "m.s.", "mba", "m.a.", "m.sc"]):
+        return 2.0
+    if any(kw in text for kw in ["bachelor", "b.s.", "b.a.", "b.sc", "bba", "degree"]):
+        return 1.0
+    return 0.0
 
 def get_snn_embedding(text: str):
     """Generates a 128-d vector using the trained SNN."""
@@ -155,18 +159,22 @@ def get_snn_embedding(text: str):
     if vectorizer is not None:
         try:
             # Check if vectorizer has a vocabulary initialized
-            if vectorizer.get_vocabulary():
+            # Check if vectorizer has a real vocabulary (more than just mask and UNK)
+            if len(vectorizer.get_vocabulary()) > 2:
                 indices = vectorizer([str(text)])
                 use_fallback = False
         except Exception:
             pass
             
     if use_fallback:
-        # Fallback to simple hash-based tokenizer (approximation)
+        # Fallback to STABLE simple hash-based tokenizer (approximation)
+        import hashlib
         tokens = str(text).lower().split()
         indices_list = []
         for token in tokens:
-            idx = (hash(token) % 14999) + 1
+            # Use MD5 for stable hashing across restarts
+            h = int(hashlib.md5(token.encode()).hexdigest(), 16)
+            idx = (h % 14999) + 1
             indices_list.append(idx)
         
         if len(indices_list) < 250:

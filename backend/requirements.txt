@@ -11,3 +11,6 @@ numpy
 joblib
 PyMuPDF
 python-docx
+supabase
+python-dotenv
+python-multipart

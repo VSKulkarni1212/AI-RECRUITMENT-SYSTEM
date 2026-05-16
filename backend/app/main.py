@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from app.routes import ranker, discovery, upload
+from fastapi.middleware.cors import CORSMiddleware
+from app.routes import ranker, discovery, upload, gateway
 
 # Initialize the Server
 app = FastAPI(
@@ -8,10 +9,19 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
+
 # Connect the Routers
 app.include_router(ranker.router, prefix="/api/v1")
 app.include_router(discovery.router, prefix="/api/v1")
 app.include_router(upload.router, prefix="/api/v1")
+app.include_router(gateway.router, prefix="/api/v1")
 
 @app.get("/")
 async def health_check():

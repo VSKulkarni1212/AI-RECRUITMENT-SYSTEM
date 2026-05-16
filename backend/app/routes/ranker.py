@@ -5,9 +5,13 @@ from ..services.scoring_engine import rank_candidates_service
 
 router = APIRouter()
 
+class ResumeItem(BaseModel):
+    id: str
+    text: str
+
 class RankRequest(BaseModel):
     job_description: str
-    resumes: List[str]
+    resumes: List[ResumeItem]
     mandatory_skills: List[str] = []
 
 @router.post("/rank-candidates")
