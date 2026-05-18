@@ -47,14 +47,14 @@ function Profile() {
 
         setProfile({
           name: data.full_name,
-          title: "Parsed Role",
-          location: "Location",
+          title: "Professional",
+          location: "Not Specified",
           email: data.email,
           summary: parsedSummary,
           skills: parsedSkills,
           years_exp: data.years_exp || 0,
           experience: [
-            { co: "Previous Co", role: "Previous Role", years: `${data.years_exp || 0} yrs total exp` }
+            { co: "Professional History", role: "Overall Experience", years: `${data.years_exp || 0} yrs total exp` }
           ]
         });
         setEditName(data.full_name);
@@ -94,7 +94,7 @@ function Profile() {
           years_exp: analysis?.years_exp || 0,
           edu_score: analysis?.edu_score || 0,
           experience: [
-             { co: "Extracted", role: "Experience", years: `${analysis?.years_exp || 0} yrs exp` }
+             { co: "Professional History", role: "Overall Experience", years: `${analysis?.years_exp || 0} yrs total exp` }
           ]
         }));
         

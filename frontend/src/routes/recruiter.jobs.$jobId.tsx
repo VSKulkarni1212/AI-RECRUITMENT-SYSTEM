@@ -90,7 +90,7 @@ function JobDetail() {
             department: "Engineering", 
             location: jobData.location,
             mandatorySkills: jobData.skills || [],
-            description: jobData.job_description || "No description provided."
+            description: jobData.description || "No description provided."
           });
           // Remove automatic filtering to show all candidates initially
           setMandatory([]);

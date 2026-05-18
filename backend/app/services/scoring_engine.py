@@ -65,7 +65,7 @@ def extract_generalized_features(resume_text, job_desc):
     import datetime
     current_year = datetime.datetime.now().year
     range_patterns = [
-        r'(20\d{2})\s*(?:-|to|–|—)\s*(20\d{2}|present|current|now)'
+        r'(20\d{2})[ \t]*(?:-|to|–|—)[ \t]*(?:(?:[a-z]{3,9}|\d{1,2}/)[ \t]*)?(20\d{2}|present|current|now)'
     ]
     for pattern in range_patterns:
         matches = re.findall(pattern, resume_text_lower)

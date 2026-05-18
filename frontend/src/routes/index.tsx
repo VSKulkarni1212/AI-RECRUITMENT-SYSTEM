@@ -26,7 +26,7 @@ function Landing() {
               <Sparkles className="h-3.5 w-3.5 text-teal" />
               SNN + FAISS · LambdaMART ranking · sub-second matching
             </div>
-            <h1 className="text-balance font-display text-5xl font-semibold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+            <h1 className="text-balance font-display text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               Hiring at the speed of{" "}
               <span className="bg-gradient-teal bg-clip-text text-transparent">intelligence</span>.
             </h1>
@@ -120,7 +120,7 @@ function Landing() {
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-teal/10 px-4 py-1 text-sm font-medium text-teal">
               For Candidates
             </div>
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Your career, powered by AI.</h2>
+            <h2 className="font-display text-4xl font-bold tracking-tight">Your career, powered by AI.</h2>
             <p className="mt-6 text-lg text-muted-foreground">
               Stop filling out the same forms. Upload your resume once and let our SNN-powered discovery engine match you with roles that actually fit your skills and experience.
             </p>
@@ -172,7 +172,7 @@ function Landing() {
               <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-navy/10 px-4 py-1 text-sm font-medium text-navy">
                 For Recruiters
               </div>
-              <h2 className="font-display text-4xl font-semibold tracking-tight text-navy">Hire the best, faster.</h2>
+              <h2 className="font-display text-4xl font-bold tracking-tight text-navy">Hire the best, faster.</h2>
               <p className="mt-6 text-lg text-muted-foreground text-navy/80">
                 Our LambdaMART ranking engine processes thousands of applicants in sub-seconds. Get a prioritized list of candidates based on technical fit, experience, and potential.
               </p>

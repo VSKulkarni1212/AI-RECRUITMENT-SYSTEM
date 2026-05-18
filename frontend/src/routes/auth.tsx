@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, User, Mail, Lock, ArrowRight, Eye, EyeOff, Building2 } from "lucide-react";
+import { Briefcase, Box, User, Mail, Lock, ArrowRight, Eye, EyeOff, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -145,8 +145,15 @@ function AuthPage() {
       <div className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-6xl grid-cols-1 items-center gap-12 px-6 py-12 lg:grid-cols-2">
         {/* Left: pitch */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="hidden lg:block">
-          <div className="font-display text-sm uppercase tracking-widest text-teal">TalentHive</div>
-          <h1 className="mt-4 font-display text-5xl font-semibold tracking-tight">
+          <div className="flex items-center gap-3">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#0F172A] shadow-elevated">
+              <Box className="h-6 w-6 text-white stroke-[2.5] fill-none" />
+            </div>
+            <span className="font-display text-2xl font-bold tracking-tight">
+              <span className="text-[#0F172A]">Talent</span><span className="text-teal">Hive</span>
+            </span>
+          </div>
+          <h1 className="mt-4 font-display text-5xl font-bold tracking-tight">
             Welcome.<br />Let's match you.
           </h1>
           <p className="mt-6 max-w-md text-muted-foreground">

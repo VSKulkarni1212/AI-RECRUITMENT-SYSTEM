@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useNavigate } from "@tanstack/react-router";
-import { Briefcase, LogOut, type LucideIcon } from "lucide-react";
+import { Briefcase, Box, LogOut, type LucideIcon } from "lucide-react";
 import { setSession, useSession } from "@/lib/auth-store";
 import { cn } from "@/lib/utils";
 
@@ -24,13 +24,14 @@ export function PortalLayout({
   return (
     <div className="flex min-h-screen w-full bg-muted/30">
       <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar md:flex">
-        <Link to="/" className="flex items-center gap-2 px-6 py-5 border-b border-sidebar-border">
-          <div className={cn("grid h-9 w-9 place-items-center rounded-lg shadow-elevated",
-            accent === "teal" ? "bg-gradient-teal" : "bg-gradient-navy")}>
-            <Briefcase className="h-4 w-4 text-primary-foreground" />
+        <Link to="/" className="flex items-center gap-3 px-6 py-5 border-b border-sidebar-border">
+          <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#0F172A] shadow-elevated">
+            <Box className="h-6 w-6 text-white stroke-[2.5] fill-none" />
           </div>
           <div>
-            <div className="font-display text-base font-semibold tracking-tight">TalentHive</div>
+            <div className="font-display text-lg font-bold tracking-tight">
+              <span className="text-[#0F172A]">Talent</span><span className="text-teal">Hive</span>
+            </div>
             <div className="text-[11px] uppercase tracking-wider text-muted-foreground">{title}</div>
           </div>
         </Link>

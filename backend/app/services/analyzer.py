@@ -63,7 +63,7 @@ def analyze_resume(text: str):
     import datetime
     current_year = datetime.datetime.now().year
     range_patterns = [
-        r'(20\d{2})\s*(?:-|to|–|—)\s*(20\d{2}|PRESENT|CURRENT|NOW)'
+        r'(20\d{2})[ \t]*(?:-|TO|–|—)[ \t]*(?:(?:[A-Z]{3,9}|\d{1,2}/)[ \t]*)?(20\d{2}|PRESENT|CURRENT|NOW)'
     ]
     for pattern in range_patterns:
         matches = re.findall(pattern, text.upper())

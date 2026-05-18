@@ -1,5 +1,5 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { Briefcase, LogOut } from "lucide-react";
+import { Box, LogOut } from "lucide-react";
 import { useSession, setSession } from "@/lib/auth-store";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -20,11 +20,13 @@ export function SiteHeader() {
       className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl"
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-navy shadow-elevated group-hover:shadow-glow transition-shadow">
-            <Briefcase className="h-4 w-4 text-primary-foreground" />
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#0F172A] shadow-elevated group-hover:shadow-glow transition-shadow">
+            <Box className="h-6 w-6 text-white stroke-[2.5] fill-none" />
           </div>
-          <span className="font-display text-lg font-semibold tracking-tight">TalentHive</span>
+          <span className="font-display text-2xl font-bold tracking-tight">
+            <span className="text-[#0F172A]">Talent</span><span className="text-teal">Hive</span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
